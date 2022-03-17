@@ -1,5 +1,4 @@
-{
-  "movies":[
+[
     {
       "title":"The Shawshank Redemption",
       "director":{
@@ -45,6 +44,28 @@
           "lastName":"Paltrow"
         }
       ]
-    }
+    },
+  {
+    "title":"Seven",
+    "director":{
+      "firstName":"David",
+      "lastName":"Fincher"
+    },
+    "genre":"THRILLER",
+    "date":"1995",
+    "actors":[
+      {
+        "firstName":"Morgan",
+        "lastName":"Freeman"
+      },
+      {
+        "firstName":"Brad",
+        "lastName":"Pitt"
+      },
+      {
+        "firstName":"Gwyneth",
+        "lastName":"Paltrow"
+      }
+    ]
+  }
   ]
-}

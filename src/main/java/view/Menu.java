@@ -1,8 +1,10 @@
 package view;
 
 import controller.Controller;
+import model.MovieLibrary;
 
-public abstract class Menu {
+
+public abstract class Menu implements Formatting {
 
     public static void printMenuOptions() {
 
@@ -14,26 +16,26 @@ public abstract class Menu {
         System.out.println("4. insert name  of a movie and look for some pictures");
     }
 
-    public static void mainMenu(int userChoice) {
+    public static void mainMenu(MovieLibrary movieLibrary) {
         printMenuOptions();
-
+        int userChoice = Controller.getUserChoice();
 
         switch (userChoice) {
             case 1:
-                Controller.displayAllMoviesBetweenDates();
-                Menu.mainMenu(Controller.getUserChoice());
+                Controller.displayAllMoviesBetweenDates(movieLibrary.getAllMovies());
+                Menu.mainMenu(movieLibrary);
                 break;
             case 2:
-//                company.printDataOfAllEmployees();
-                Menu.mainMenu(Controller.getUserChoice());
+                Controller.displayRandomMovie(movieLibrary.getAllMovies());
+                Menu.mainMenu(movieLibrary);
                 break;
             case 3:
-//                company.addEmployee(UserInputHandler.getEmployee(company));
-                Menu.mainMenu(Controller.getUserChoice());
+                Controller.displayAllMoviesWith(movieLibrary.getAllMovies());
+                Menu.mainMenu(movieLibrary);
                 break;
             case 4:
 //                System.out.println(ANSI_YELLOW + "Bye, bye." + ANSI_RESET);
-                Menu.mainMenu(Controller.getUserChoice());
+                Menu.mainMenu(movieLibrary);
                 break;
 
             default: {

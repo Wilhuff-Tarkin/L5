@@ -6,9 +6,20 @@ public class Movie {
 
     private String title;
     private Director director;
-    private Genre genre;
+    private String genre;
     private int date;
     private List<Actor> actors;
+
+    public Movie(String title, Director director, String genre, int date, List<Actor> actors) {
+        this.title = title;
+        this.director = director;
+        this.genre = genre;
+        this.date = date;
+        this.actors = actors;
+    }
+
+    public Movie() {
+    }
 
     public String getTitle() {
         return title;
@@ -26,11 +37,11 @@ public class Movie {
         this.director = director;
     }
 
-    public Genre getGenre() {
+    public String getGenre() {
         return genre;
     }
 
-    public void setGenre(Genre genre) {
+    public void setGenre(String genre) {
         this.genre = genre;
     }
 
@@ -43,6 +54,7 @@ public class Movie {
     }
 
     public List<Actor> getActors() {
+
         return actors;
     }
 
@@ -50,21 +62,14 @@ public class Movie {
         this.actors = actors;
     }
 
-    public Movie(String title, Director director, Genre genre, int date, List<Actor> actors) {
-        this.title = title;
-        this.director = director;
-        this.genre = genre;
-        this.date = date;
-        this.actors = actors;
-    }
-
-    public Movie() {
-    }
-
-    public Movie(String title, Director director, Genre genre, int date) {
-        this.title = title;
-        this.director = director;
-        this.genre = genre;
-        this.date = date;
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "title='" + title + '\'' +
+                ", director=" + director +
+                ", genre=" + genre +
+                ", date=" + date +
+                ", actors=" + actors +
+                '}';
     }
 }
