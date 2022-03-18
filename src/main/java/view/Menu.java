@@ -10,10 +10,14 @@ public abstract class Menu implements Formatting {
 
         System.out.println("you have following options");
         System.out.println("choose one:");
-        System.out.println("1. insert two dates one after another to search for movies between them (both included");
-        System.out.println("2. learn about random movie");
-        System.out.println("3. insert name and surname of an actor to learn about movie he have starred in");
-        System.out.println("4. insert name  of a movie and look for some pictures");
+        Formatting.printInYellow("1.");
+        System.out.println(" insert two dates one after another to search for movies between them (both included");
+        Formatting.printInYellow("2.");
+        System.out.println(" learn about random movie");
+        Formatting.printInYellow("3.");
+        System.out.println(" insert name and surname of an actor to learn about movie he have starred in");
+        Formatting.printInYellow("4.");
+        System.out.println(" insert name  of a movie and look for some pictures");
     }
 
     public static void mainMenu(MovieLibrary movieLibrary) {

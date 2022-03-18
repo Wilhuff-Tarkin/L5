@@ -11,7 +11,7 @@ public interface Formatting {
     String PURPLE_BOLD = "\033[1;35m";
 
     static void printInYellow(String s) {
-        System.out.println(YELLOW_UNDERLINED + s + ANSI_RESET);
+        System.out.print(ANSI_YELLOW + s + ANSI_RESET);
     }
 
     static void printInRed(String s) {

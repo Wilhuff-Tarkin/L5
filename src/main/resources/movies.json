@@ -46,25 +46,48 @@
       ]
     },
   {
-    "title":"Seven",
+    "title":"The Lord of the Rings: The Fellowship of the Ring",
     "director":{
-      "firstName":"David",
-      "lastName":"Fincher"
+      "firstName":"Peter",
+      "lastName":"Jackson"
     },
-    "genre":"THRILLER",
-    "date":"1995",
+    "genre":"Fantasy",
+    "date":"2001",
     "actors":[
       {
-        "firstName":"Morgan",
-        "lastName":"Freeman"
+        "firstName":"Elijah",
+        "lastName":"Wood"
       },
       {
-        "firstName":"Brad",
-        "lastName":"Pitt"
+        "firstName":"Ian",
+        "lastName":"McKellen"
       },
       {
-        "firstName":"Gwyneth",
-        "lastName":"Paltrow"
+        "firstName":"Orlando",
+        "lastName":"Bloom"
+      }
+    ]
+  },
+  {
+    "title":"Shichinin no samurai",
+    "director":{
+      "firstName":"Akira",
+      "lastName":"Kurosawa"
+    },
+    "genre":"Drama",
+    "date":"1954",
+    "actors":[
+      {
+        "firstName":"Toshirô",
+        "lastName":"Mifune"
+      },
+      {
+        "firstName":"Takashi",
+        "lastName":"Shimura"
+      },
+      {
+        "firstName":"Keiko",
+        "lastName":"Tsushima"
       }
     ]
   }
