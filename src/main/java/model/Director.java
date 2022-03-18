@@ -1,7 +1,6 @@
 package model;
 
-public class Director   {
-
+public class Director {
     private String firstName;
     private String lastName;
 
@@ -13,27 +12,16 @@ public class Director   {
     public Director() {
     }
 
+    @Override
+    public String toString() {
+        return firstName + " " + lastName;
+    }
+
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getLastName() {
         return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    @Override
-    public String toString() {
-        return "Director{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
     }
 }

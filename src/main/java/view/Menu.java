@@ -7,47 +7,43 @@ import model.MovieLibrary;
 public abstract class Menu implements Formatting {
 
     public static void printMenuOptions() {
-
-        System.out.println("you have following options");
-        System.out.println("choose one:");
-        Formatting.printInYellow("1.");
-        System.out.println(" insert two dates one after another to search for movies between them (both included");
-        Formatting.printInYellow("2.");
-        System.out.println(" learn about random movie");
-        Formatting.printInYellow("3.");
-        System.out.println(" insert name and surname of an actor to learn about movie he have starred in");
-        Formatting.printInYellow("4.");
-        System.out.println(" insert name  of a movie and look for some pictures");
+        Formatting.printInGreenUnderlined("WELCOME TO MOVIE LIBRARY");
+        System.out.println("Choose one from the options below:");
+        Formatting.printInYellowInLine("1.");
+        System.out.println("Search for movies released between two dates (years)");
+        Formatting.printInYellowInLine("2.");
+        System.out.println("Lookup information about random movie from library");
+        Formatting.printInYellowInLine("3.");
+        System.out.println("Search for all movies featuring specific movie star");
+        Formatting.printInYellowInLine("4.");
+        System.out.println("Lookup additional information in Internet Movie DataBase (IMDb.com)");
     }
 
     public static void mainMenu(MovieLibrary movieLibrary) {
+        Controller controller = new Controller();
         printMenuOptions();
-        int userChoice = Controller.getUserChoice();
+        int userChoice = controller.getUserChoice();
 
         switch (userChoice) {
             case 1:
-                Controller.displayAllMoviesBetweenDates(movieLibrary.getAllMovies());
+                controller.showAllMoviesBetweenDates(movieLibrary.getAllMovies());
                 Menu.mainMenu(movieLibrary);
                 break;
             case 2:
-                Controller.displayRandomMovie(movieLibrary.getAllMovies());
+                controller.showRandomMovie(movieLibrary.getAllMovies());
                 Menu.mainMenu(movieLibrary);
                 break;
             case 3:
-                Controller.displayAllMoviesWith(movieLibrary.getAllMovies());
+                controller.showAllMoviesWith(movieLibrary.getAllMovies());
                 Menu.mainMenu(movieLibrary);
                 break;
             case 4:
-//                System.out.println(ANSI_YELLOW + "Bye, bye." + ANSI_RESET);
+                controller.searchInIMDB();
                 Menu.mainMenu(movieLibrary);
                 break;
-
             default: {
-//                System.out.println(ANSI_RED + "Sorry, this data seems to be incorrect. Please try again." + ANSI_RESET);
+                Formatting.printInRed("Something went wrong.");
             }
-
-
         }
     }
-
 }

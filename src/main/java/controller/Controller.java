@@ -1,6 +1,5 @@
 package controller;
 
-import model.Actor;
 import model.Movie;
 import view.Formatting;
 
@@ -8,135 +7,125 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public abstract class Controller {
+public class Controller {
 
+    public void showAllMoviesBetweenDates(List<Movie> allMovies) {
+        int[] scope = getTwoDatesFromUser();
+        Stream<Movie> allMoviesStream = allMovies.stream();
+        Arrays.sort(scope);
 
-
-    public static int getUserChoice(){
-
-        Scanner scanner = new Scanner(System.in);
-
-            while (!scanner.hasNext("[1-4]")) {
-                System.out.println("Please stick to options: 1, 2, 3 or 4");
-                scanner.next();
-            }
-            return scanner.nextInt();
-        }
-
-
-    public static void displayRandomMovie(List<Movie> allMovies){
-
-        Random random = new Random();
-
-
-        System.out.println(allMovies.get(random.nextInt(allMovies.size())));
-
-
-    }
-
-    public static void displayAllMoviesBetweenDates(List<Movie> allMovies){
-
-
-        int [] scope = getDatesFromUser();
-
-        Stream<Movie> allMovi = allMovies.stream();
-
-        List<Movie> result = allMovi
-                .filter(movie -> movie.getDate()>=scope[0])
-                .filter(movie -> movie.getDate()<=scope[1])
+        List<Movie> result = allMoviesStream
+                .filter(movie -> movie.getDate() >= scope[0])
+                .filter(movie -> movie.getDate() <= scope[1])
                 .collect(Collectors.toList());
 
         if (result.size() == 0) {
-            printNegativeResult(scope);
+            notifyAboutNegativeSearchResult(scope);
         } else {
-            System.out.println();
-            System.out.println("Found " + result.size() + " movies matching search conditions:");
+            notifyAboutPositiveSearchResult(result.size());
 
             for (Movie movie : result) {
-                System.out.println();
-                movie.toString();
+                System.out.println(movie.toString());
             }
         }
-
     }
 
-    private static void printNegativeResult(int[] scope) {
+    public void showRandomMovie(List<Movie> allMovies) {
+        Random random = new Random();
+        System.out.println(allMovies.get(random.nextInt(allMovies.size())));
     }
 
-    private static int [] getDatesFromUser() {
-        Scanner scanner = new Scanner(System.in);
+    public void showAllMoviesWith(List<Movie> allMovies) {
+        Stream<Movie> allMoviesStream = allMovies.stream();
 
-        System.out.println("Please give a starting year (4 digits)");
-        int startingYear = scanner.nextInt();
+        System.out.println("Please enter first name of movie star");
+        String firstName = getStringFromUser();
+        System.out.println("Please enter surname of movie star");
+        String surname = getStringFromUser();
 
-        System.out.println("Please give a end year (4 digits)");
-        int endYear = scanner.nextInt();
-
-        return new int[]{startingYear, endYear};
-    }
-
-
-    public static void displayAllMoviesWith (List<Movie> allMovies){
-        System.out.println("Give me a name of an actor");
-        String name = getActorFromUSer();
-        System.out.println("Give me a surname of an actor");
-        String surname = getActorFromUSer();
-
-        Actor lookedFor = new Actor(name, surname);
-        Actor tmp;
-        List <Movie> result = new ArrayList<>();
-
-
-
+        List<Movie> result = allMoviesStream
+                .filter(movie -> movie.getActors().stream().anyMatch(actor -> actor.getFirstName().equals(firstName)))
+                .filter(movie -> movie.getActors().stream().anyMatch(actor -> actor.getLastName().equals(surname)))
+                .collect(Collectors.toList());
 
         if (result.size() == 0) {
-            System.out.println("nit found");;
+            notifyAboutNegativeSearchResult(firstName, surname);
         } else {
-            System.out.println();
-            System.out.println("Found " + result.size() + " movies matching search conditions:");
+            notifyAboutPositiveSearchResult(result.size());
 
             for (Movie movie : result) {
-                System.out.println();
-                movie.toString();
+                Formatting.printInGreenInLine("==> ");
+                System.out.println(movie.getTitle());
             }
+            System.out.println();
         }
-
     }
 
-    private static String getActorFromUSer() {
-        Scanner scanner = new Scanner(System.in);
-
-
-        while (!scanner.hasNext("[a-zA-Z]+")) {
-            Formatting.printInRed("nie tak");
-            scanner.next();
-        }
-        return scanner.next();
-
-
-    }
-
-    public static void searchMovies (){
-
-        String picturesFromMovie = "https://www.google.com/search?tbm=isch&q=" ;
-
+    public void searchInIMDB() {
+        System.out.print("Please enter ");
+        Formatting.printInGreenInLine("title of a movie");
+        System.out.print(" or a ");
+        Formatting.printInGreenInLine("name of someone");
+        System.out.println(" from movie industry (opens new browser window)");
+        String title = getStringFromUser();
+        title = title.replace(' ', '+');
+        String url = "https://www.imdb.com/find?q=" + title;
 
         try {
-            Desktop.getDesktop().browse(new URI(picturesFromMovie));
+            Desktop.getDesktop().browse(new URI(url));
         } catch (IOException | URISyntaxException e1) {
             e1.printStackTrace();
         }
-
     }
 
+    public int getUserChoice() {
+        Scanner scanner = new Scanner(System.in);
+        while (!scanner.hasNext("[1-4]")) {
+            System.out.println("Please stick to options: 1, 2, 3 or 4");
+            scanner.next();
+        }
+        return scanner.nextInt();
+    }
 
+    private int[] getTwoDatesFromUser() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter a earliest release year (included in results)");
+        int startingYear = scanner.nextInt();
+        System.out.println("Please enter an latest release year (included in results)");
+        int endYear = scanner.nextInt();
+        return new int[]{startingYear, endYear};
+    }
 
+    private String getStringFromUser() {
+        Scanner scanner = new Scanner(System.in);
+        Pattern pattern = Pattern.compile("[A-Za-z\\s]*");
+        while (!scanner.hasNext(pattern)) {
+            Formatting.printInRed("nie tak");
+            scanner.nextLine();
+        }
+        return scanner.nextLine();
+    }
 
+    private void notifyAboutPositiveSearchResult(int size) {
+        System.out.println();
+        Formatting.printInYellowInLine(String.valueOf(size));
+        System.out.print(" movie(s) matching search conditions found:");
+        System.out.println();
+    }
+
+    private void notifyAboutNegativeSearchResult(String name, String surname) {
+        System.out.println("Sorry, library do not have any movies with " + name + " " + surname);
+    }
+
+    private void notifyAboutNegativeSearchResult(int[] scope) {
+        System.out.println("Sorry did not found anything between " + scope[0] + " and " + scope[1]);
+    }
 }

@@ -65,6 +65,10 @@
       {
         "firstName":"Orlando",
         "lastName":"Bloom"
+      },
+      {
+        "firstName": "Hugo",
+        "lastName": "Weaving"
       }
     ]
   },
@@ -88,6 +92,175 @@
       {
         "firstName":"Keiko",
         "lastName":"Tsushima"
+      }
+    ]
+  },
+  {
+    "title":"Forbidden Planet",
+    "director":{
+      "firstName":"Fred",
+      "lastName":"Wilcox"
+    },
+    "genre":"Sci fi",
+    "date":"1956",
+    "actors":[
+      {
+        "firstName":"Walter",
+        "lastName":"Pidgeon"
+      },
+      {
+        "firstName":"Anne",
+        "lastName":"Francis"
+      },
+      {
+        "firstName":"Leslie",
+        "lastName":"Nielsen"
+      }
+    ]
+  },
+  {
+    "title":"2001: A Space Odyssey",
+    "director":{
+      "firstName":"Stanley",
+      "lastName":"Kubrick"
+    },
+    "genre":"Sci fi",
+    "date":"1968",
+    "actors":[
+      {
+        "firstName":"Keir",
+        "lastName":"Dullea"
+      },
+      {
+        "firstName":"Gary",
+        "lastName":"Lockwood"
+      },
+      {
+        "firstName":"William",
+        "lastName":"Sylvester"
+      }
+    ]},
+
+      {
+        "title": "Matrix",
+        "director": {
+          "firstName": "Wachowsky",
+          "lastName": "Brothers"
+        },
+        "genre": "Sci fi",
+        "date": "1999",
+        "actors": [
+          {
+            "firstName": "Keanu",
+            "lastName": "Reeves"
+          },
+          {
+            "firstName": "Laurence",
+            "lastName": "Fishburne"
+          },
+          {
+            "firstName": "Hugo",
+            "lastName": "Weaving"
+          }
+        ]
+      },
+  {
+    "title":"Point Break",
+    "director":{
+      "firstName":"Kathryn",
+      "lastName":"Bigelow"
+    },
+    "genre":"Action",
+    "date":"1991",
+    "actors":[
+      {
+        "firstName":"Patrick",
+        "lastName":"Swayze"
+      },
+      {
+        "firstName": "Keanu",
+        "lastName": "Reeves"
+      },
+      {
+        "firstName":"Lori",
+        "lastName":"Petty"
+      }
+    ]
+  },
+  {
+    "title":"Road House",
+    "director":{
+      "firstName":"Rowdy",
+      "lastName":"Herrington"
+    },
+    "genre":"Action",
+    "date":"1989",
+    "actors":[
+      {
+        "firstName":"Patrick",
+        "lastName":"Swayze"
+      },
+      {
+        "firstName": "Kelly",
+        "lastName": "Lynch"
+      },
+      {
+        "firstName":"Sam",
+        "lastName":"Elliot"
+      }
+    ]
+  },
+  {
+    "title":"Big Lebowski",
+    "director":{
+      "firstName":"Joel",
+      "lastName":"Coen"
+    },
+    "genre":"Comedy",
+    "date":"1988",
+    "actors":[
+      {
+        "firstName":"Jeff",
+        "lastName":"Bridges"
+      },
+      {
+        "firstName": "John",
+        "lastName": "Goodman"
+      },
+      {
+        "firstName":"Julianne",
+        "lastName":"Moore"
+      },
+      {
+        "firstName":"Steve",
+        "lastName":"Buscemi"
+      },
+      {
+        "firstName":"David",
+        "lastName":"Huddleston"
+      }
+    ]
+  },
+  {
+    "title":"Escape from L.A.",
+    "director":{
+      "firstName":"John",
+      "lastName":"Carpenter"
+    },
+    "genre":"Adventure",
+    "date":"1996",
+    "actors":[
+      {
+        "firstName":"Kurt",
+        "lastName":"Russell"
+      },
+      {
+        "firstName": "Steve",
+        "lastName": "Buscemi"
+      },
+      {
+        "firstName":"Stacy",
+        "lastName":"Keach"
       }
     ]
   }

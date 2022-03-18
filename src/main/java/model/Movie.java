@@ -21,55 +21,44 @@ public class Movie {
     public Movie() {
     }
 
-    public String getTitle() {
-        return title;
+    public int getDate() {
+        return date;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public List<Actor> getActors() {
+        return actors;
+    }
+
+    public String getFormattedActorsList() {
+        StringBuilder result = new StringBuilder();
+        for (Actor actor : actors) {
+            result.append(actor.getFirstName());
+            result.append(" ");
+            result.append(actor.getLastName());
+            result.append(", ");
+        }
+        return String.valueOf(result.substring(0, result.length() - 2));
+    }
+
+    @Override
+    public String toString() {
+        return "\r\n" +
+                "title: " + title + "\r\n" +
+                "director: " + director + "\r\n" +
+                "genre: " + genre + "\r\n" +
+                "date: " + date + "\r\n" +
+                "actors: " + getFormattedActorsList() + "\r\n";
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public Director getDirector() {
         return director;
     }
 
-    public void setDirector(Director director) {
-        this.director = director;
-    }
-
     public String getGenre() {
         return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public int getDate() {
-        return date;
-    }
-
-    public void setDate(int date) {
-        this.date = date;
-    }
-
-    public List<Actor> getActors() {
-
-        return actors;
-    }
-
-    public void setActors(List<Actor> actors) {
-        this.actors = actors;
-    }
-
-    @Override
-    public String toString() {
-        return "Movie{" +
-                "title='" + title + '\'' +
-                ", director=" + director +
-                ", genre=" + genre +
-                ", date=" + date +
-                ", actors=" + actors +
-                '}';
     }
 }
