@@ -1,27 +1,13 @@
 package model;
 
-public class Actor {
-
-    private String firstName;
-    private String lastName;
+public class Actor extends Person {
 
     public Actor(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+        super(firstName, lastName);
     }
+
     public Actor() {
+        super();
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    @Override
-    public String toString() {
-        return firstName + " " + lastName;
-    }
 }
